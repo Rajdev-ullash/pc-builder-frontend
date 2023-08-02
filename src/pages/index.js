@@ -1,3 +1,4 @@
+import RootLayout from "@/components/Layouts/RootLayout";
 import React from "react";
 
 const index = () => {
@@ -9,3 +10,7 @@ const index = () => {
 };
 
 export default index;
+
+index.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};
