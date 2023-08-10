@@ -1,11 +1,21 @@
 import RootLayout from "@/components/Layouts/RootLayout";
+import { pcBuildRequest } from "@/redux/features/pcBuild/pcBuildSlice";
 import { Button, Card } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { Router } from "next/router";
 import React from "react";
-
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 const pcBuildDetails = ({ data }) => {
-  console.log(data?.data);
+  const router = useRouter();
+
+  const dispatch = useDispatch();
+  const add = (data) => {
+    dispatch(pcBuildRequest(data));
+    //back to previous route with next route
+    router.back();
+  };
   return (
     <div className="container mx-auto p-4">
       {data?.data.map((item, index) => (
@@ -42,7 +52,11 @@ const pcBuildDetails = ({ data }) => {
                 <span className="price text-base">৳ {item.price}</span>
               </div>
               <div className="product-add-cart mt-2">
-                <Button type="primary" className="btn btn-primary btn-cart">
+                <Button
+                  type="primary"
+                  onClick={() => add(item)}
+                  className="btn btn-primary btn-cart"
+                >
                   <span>Add</span>
                 </Button>
               </div>

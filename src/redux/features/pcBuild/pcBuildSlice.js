@@ -23,8 +23,13 @@ const pcBuildSlice = createSlice({
         state.pcBuild.push(action.payload);
       }
     },
+    removeOnePcBuild: (state, action) => {
+      state.pcBuild = state.pcBuild.filter(
+        (item) => item.category !== action.payload
+      );
+    },
   },
 });
 
-export const { pcBuildRequest } = pcBuildSlice.actions;
+export const { pcBuildRequest, removeOnePcBuild } = pcBuildSlice.actions;
 export default pcBuildSlice.reducer;
