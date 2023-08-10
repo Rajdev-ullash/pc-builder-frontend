@@ -2,11 +2,12 @@ import RootLayout from "@/components/Layouts/RootLayout";
 
 import React from "react";
 import Product from "./product";
+import HeroSection from "@/components/HeroSection";
 
 const index = ({ data }) => {
   return (
     <div>
-      <h3 className="bg-red-500">Hi i am index page</h3>
+      <HeroSection />
       <Product data={data} />
     </div>
   );
